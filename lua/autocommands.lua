@@ -18,3 +18,36 @@ end
 autocommand("VimEnter", {
     callback = open_nvim_tree,
 })
+
+local text_pattern = { 
+				"python",
+				"cpp", 
+				"javascript", 
+				"typescript",
+				"css",
+				"html",
+				"java",
+				"go",
+				"gitcommit",
+				"git_rebase",
+				"gitattributes",
+				"json",
+				"lua",
+				"scss",
+				"svelte",
+				"vim",
+				"rust",
+				"latex",
+			}
+
+autocommand("Filetype", {
+    pattern = text_pattern,
+    callback = function()
+        vim.bo.expandtab = false
+        vim.bo.tabstop = 4
+        vim.bo.softtabstop = 0
+        vim.bo.shiftwidth = 4
+        vim.bo.autoindent = true
+        vim.opt.spell = true
+    end,
+})
